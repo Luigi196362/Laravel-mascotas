@@ -1,0 +1,59 @@
+nav{
+    background-color: rgb(255, 183, 0);
+    top: 0;
+    height: 5vh;
+    display: flex;
+    justify-content: space-around;
+    height: 9vh;
+    box-shadow: 0px 0px 5px 4px rgb(200, 200, 200) ;
+}
+
+a{
+    text-decoration: none;
+    font-weight: bolder;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    align-content: center;
+    width: 90%;
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.contenido{
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-top: 1vh
+}
+
+
+.añadir_icono{
+    text-align: end;
+}
+
+.trash:hover{
+    transform: scale(1.1);
+}
+
+.pencil:hover{
+    transform: scale(1.1);
+}
+
+nav a.active {
+    color: white;  /* Cambiar el color de la letra a blanco */
+    background-color: #ff8800;  /* O cualquier color que prefieras para el fondo */
+    cursor: default;
+}
+
+nav a.deactive:hover{
+    box-sizing: border-box;
+    background-color: rgb(255, 208, 0);
+    /*border-bottom: solid  rgb(255, 166, 0) 5px;*/ 
+}
+
+
