@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Mascota extends Model
 {
@@ -16,5 +17,5 @@ class Mascota extends Model
     {
         return $this->hasMany(Cita::class);
     }
-
+    use SoftDeletes;
 }

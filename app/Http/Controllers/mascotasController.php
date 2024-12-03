@@ -42,7 +42,7 @@ class mascotasController extends Controller
             'especie' => 'required|string|max:255',
             'raza' => 'required|string|max:255',
             'edad' => 'required|integer|min:1',
-            'peso' => 'required|integer|min:1',
+            'peso' => 'required|numeric|min:1',
             'dueño' => 'required|string|max:255',
             'imagen' => 'required|string|max:255',
             'contacto' => 'required|string|max:255',
@@ -74,10 +74,11 @@ class mascotasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request)
     {
         //
-        $mascota = Mascota::findOrFail($id);
+        $mascota = Mascota::findOrFail($request->mascota_id);
+
     
         return view('mascotas.edit', compact('mascota'));
     }
@@ -95,7 +96,7 @@ class mascotasController extends Controller
                 'especie' => 'required|string|max:255',
                 'raza' => 'required|string|max:255',
                 'edad' => 'required|integer|min:1',
-                'peso' => 'required|integer|min:1',
+                'peso' => 'required|numeric|min:1',
                 'dueño' => 'required|string|max:255',
                 'imagen' => 'required|string|max:255',
                 'contacto' => 'required|string|max:255',

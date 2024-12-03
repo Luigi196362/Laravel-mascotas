@@ -15,6 +15,7 @@
         <a href="{{ route('citas.index') }}" class="{{ Route::is('citas.*') ? 'active' : 'deactive' }}">Citas</a>
         <a href="{{ route('mascotas.index') }}" class="{{ Route::is('mascotas.*') ? 'active' : 'deactive' }}">Mascotas</a>
         <a href="{{ route('servicios.index') }}" class="{{ Route::is('servicios.*') ? 'active' : 'deactive' }}">Servicios</a>
+        <a href="{{ route('productos.index') }}" class="{{ Route::is('productos.*') ? 'active' : 'deactive' }}">Productos</a>
     </nav>
     <div class="contenido">
     @yield ('content') @section('content')

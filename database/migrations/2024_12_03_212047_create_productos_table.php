@@ -11,17 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mascotas', function (Blueprint $table) {
+        Schema::create('productos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('nombre');
-            $table->string('especie');
-            $table->string('raza');
-            $table->integer('edad');
-            $table->float('peso');
-            $table->string('dueño');
-            $table->string('imagen');
-            $table->string('contacto');
+            $table->string('descripcion');
+            $table->float('precio');
+            $table->integer('cantidad');
+            $table->string('categoria');
             $table->softDeletes(); // Añade la columna 'deleted_at' para borrado lógico
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mascotas');
+        Schema::dropIfExists('productos');
     }
 };

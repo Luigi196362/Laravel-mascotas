@@ -3,7 +3,7 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('tablas.css') }}">
 <div class="añadir_icono">
-<a href="{{ route('servicios.create') }}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+<a href="{{ route('productos.create') }}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
 </svg></a></div>
@@ -14,19 +14,23 @@
                     <th>Nombre</th>
                     <th>Descripción</th>
                     <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Categoria</th>
                     <th></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-            @foreach($servicios as $servicio) <!-- Recorre cada mascota -->
+            @foreach($productos as $producto) <!-- Recorre cada mascota -->
                 <tr>
-                    <td>{{$servicio->nombre}}</td>
-                    <td>{{$servicio->descripcion}}</td>
-                    <td>${{$servicio->precio}}</td>
+                    <td>{{$producto->nombre}}</td>
+                    <td>{{$producto->descripcion}}</td>
+                    <td>${{$producto->precio}}</td>
+                    <td>{{$producto->cantidad}}</td>
+                    <td>{{$producto->categoria}}</td>
                             <!-- Formulario de eliminación -->
                     <td>
-                        <form action="{{ route('servicios.destroy', $servicio->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este servicio?');">
+                        <form action="{{ route('productos.destroy', $producto->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este producto?');">
                             @csrf
                             @method('DELETE')
                             <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
@@ -38,9 +42,9 @@
                     </td>
            
                     <td>
-    <form action="{{ route('servicios.edit') }}" method="POST">
+    <form action="{{ route('productos.edit') }}" method="POST">
         @csrf
-        <input type="hidden" name="servicio_id" value="{{ $servicio->id }}">
+        <input type="hidden" name="producto_id" value="{{ $producto->id }}">
         <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="pencil" viewBox="0 0 16 16">
                 <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>

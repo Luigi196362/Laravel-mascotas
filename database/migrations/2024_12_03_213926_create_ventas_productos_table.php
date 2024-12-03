@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('servicios', function (Blueprint $table) {
+        Schema::create('ventas_productos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('descripcion');
-            $table->float('precio');
             $table->timestamps();
-            $table->softDeletes(); // Añade la columna 'deleted_at' para borrado lógico
         });
     }
 
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('servicios');
+        Schema::dropIfExists('ventas_productos');
     }
 };

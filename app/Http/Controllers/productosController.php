@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Servicio;  
-class serviciosController extends Controller
+use App\Models\Producto;
+class productosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -12,12 +12,9 @@ class serviciosController extends Controller
     public function index()
     {
         //
-                //
-        // Obtener todas las mascotas de la base de datos
-        $servicios = Servicio::all(); // Recupera todas las mascotas
-
-        // Pasar las mascotas a la vista
-        return view('servicios.index', compact('servicios'));
+        $productos = Producto::all(); 
+        return view('productos.index', compact('productos')); 
+    
     }
 
     /**
@@ -26,7 +23,7 @@ class serviciosController extends Controller
     public function create()
     {
         //
-        return view('servicios.create');
+        return view('productos.create');
     }
 
     /**
@@ -35,22 +32,25 @@ class serviciosController extends Controller
     public function store(Request $request)
     {
         //
-        
-         // Validación de los datos del formulario
          $validated = $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string|max:255',
             'precio' => 'required|numeric|min:1',
+            'cantidad' => 'required|numeric|min:0',
+            'categoria' => 'required|string|max:255',
         ]);
 
         
-        Servicio::create([
+        Producto::create([
             'nombre' => $validated['nombre'],
             'descripcion' => $validated['descripcion'],
             'precio' => $validated['precio'],
+            'cantidad' => $validated['cantidad'],
+            'categoria' => $validated['categoria'],
         ]);
 
-        return \redirect()->route('servicios.index')->with('succes','Servicio guardada correctamente.');
+        return \redirect()->route('productos.index')->with('succes','Producto guardado correctamente.');
+    
     }
 
     /**
@@ -66,11 +66,9 @@ class serviciosController extends Controller
      */
     public function edit(Request $request)
     {
-   // Obtén el servicio usando el ID enviado desde el formulario
-   $servicio = Servicio::findOrFail($request->servicio_id);
-
-   // Renderiza la vista de edición con el servicio
-   return view('servicios.edit', compact('servicio'));
+        //
+        $producto = Producto::findOrFail($request->producto_id);
+        return view('productos.edit', compact('producto'));
     }
 
     /**
@@ -86,16 +84,18 @@ class serviciosController extends Controller
                 'nombre' => 'required|string|max:255',
                 'descripcion' => 'required|string|max:255',
                 'precio' => 'required|numeric|min:1',
+                'cantidad' => 'required|numeric|min:0',
+                'categoria' => 'required|string|max:255',
             ]);
         
             // Buscar la cita por su ID
-            $servicio = Servicio::findOrFail($id);
+            $producto = Producto::findOrFail($id);
         
             // Actualizar la cita con los datos validados
-            $servicio->update($validated);
+            $producto->update($validated);
         
             // Redirigir con un mensaje de éxito
-            return redirect()->route('servicios.index')->with('success', 'Servicio editada correctamente.');
+            return redirect()->route('productos.index')->with('success', 'Producto editado correctamente.');
 
     }
 
@@ -105,11 +105,11 @@ class serviciosController extends Controller
     public function destroy(string $id)
     {
         //
-    $servicio = Servicio::findOrFail($id);
-    $servicio->delete();
+    $producto = Producto::findOrFail($id);
+    $producto->delete();
 
     // Redirigir con un mensaje de éxito
-    return redirect()->route('servicios.index')->with('success', 'Servicio eliminada con éxito');
+    return redirect()->route('productos.index')->with('success', 'Producto eliminado con éxito');
     
     }
 }

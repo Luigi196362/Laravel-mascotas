@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,5 +18,5 @@ class Servicio extends Model
         return $this->hasMany(Cita::class);
     }
 
-
+    use SoftDeletes;
 }

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Cita extends Model
 {
@@ -21,5 +23,5 @@ class Cita extends Model
     {
         return $this->belongsTo(Servicio::class);
     }
-
+    use SoftDeletes;
 }

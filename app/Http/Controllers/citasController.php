@@ -14,7 +14,12 @@ class citasController extends Controller
      */
     public function index()
     {
-        $citas = Cita::with(['mascota', 'servicio'])->get();
+        $citas = Cita::whereHas('mascota', function ($query) {
+            $query->whereNotNull('nombre');
+        })->whereHas('servicio', function ($query) {
+            $query->whereNotNull('nombre');
+        })->get();
+    
         return view('citas.index', compact('citas'));
     }
 
@@ -65,9 +70,10 @@ class citasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request)
     {
-        $cita = Cita::with(['mascota', 'servicio'])->findOrFail($id);
+
+        $cita = Cita::with(['mascota', 'servicio'])->findOrFail($request->cita_id);
         $mascotas = Mascota::all();
         $servicios = Servicio::all();
     

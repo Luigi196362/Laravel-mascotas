@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label for="peso">Peso (Kg)</label>
-                <input type="number" class="form-control" id="peso" name="peso">
+                <input type="number" class="form-control" id="peso" step="0.01" name="peso">
             </div>
             <div class="form-group">
                 <label for="dueño">Nombre del Dueño</label>

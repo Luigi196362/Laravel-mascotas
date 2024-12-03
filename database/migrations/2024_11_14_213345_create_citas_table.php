@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('estado');
             $table->foreign('mascota_id')->references('id')->on('mascotas')->onDelete('cascade');
             $table->foreign('servicio_id')->references('id')->on('servicios')->onDelete('cascade');
+            $table->softDeletes(); // Añade la columna 'deleted_at' para borrado lógico
         });
     }
 
